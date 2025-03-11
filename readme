@@ -1,2 +1,14 @@
 source ~/django5_env/bin/activate
+rubn dev
 python3.12 manage.py runserver
+run admin site
+python3.12 manage.py createsuperuser
+python3.12 manage.py runserver
+http://127.0.0.1:8000/admin/
+admin admin@admin.local 123
+
+python3.12 manage.py shell
+python3.12 manage.py makemigrations blog
+python3.12 manage.py sqlmigrate blog 0001
+
+75
