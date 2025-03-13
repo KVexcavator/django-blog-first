@@ -19,10 +19,6 @@ __pycache__/
 *.db
 *.sqlite
 
-# Статика и медиафайлы (если хранятся локально)
-static/
-media/
-
 # Файлы миграций, если работаешь в команде (по желанию)
 **/migrations/*.py
 !**/migrations/__init__.py
@@ -60,3 +56,4 @@ htmlcov/
 *.pyc
 *.pyo
 pytest_cache/
+.qodo

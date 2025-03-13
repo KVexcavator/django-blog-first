@@ -1,5 +1,6 @@
 source ~/django5_env/bin/activate
 rubn dev
+
 python3.12 manage.py runserver
 run admin site
 python3.12 manage.py createsuperuser
