@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from mysite import settings
 
@@ -14,10 +15,13 @@ class Post(models.Model):
   #enum
   class Status(models.TextChoices):
     DRAFT = 'DF', 'Draft'
-    PUBLISHED = 'PB', 'Pablished'
+    PUBLISHED = 'PB', 'Published'
 
   title = models.CharField(max_length=250)
-  slug = models.SlugField(max_length=250) #short label
+  slug = models.SlugField(
+    max_length=250,
+    unique_for_date='publish'
+    ) #short label
   # many-to-one
   author = models.ForeignKey(
     settings.AUTH_USER_MODEL,
@@ -48,3 +52,14 @@ class Post(models.Model):
   #human-readable representation of the object
   def __str__(self):
     return self.title
+  
+  def get_absolute_url(self):
+    return reverse(
+      'blog:post_detail',
+      args=[
+        self.publish.year,
+        self.publish.month,
+        self.publish.day,
+        self.slug
+      ]
+    )
